@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchlist - Crypto Tracker</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Your Watchlist</h1>
+      <nav class="navigation">
+        <a href="/home" class="btn btn-primary">Home</a>
+      </nav>
+    </header>
+    <% watchlist.forEach(coin => { %>
+        <div class="crypto-card">
+          <h2><%= coin.coin_name %> (<%= coin.coin_symbol %>)</h2>
+          <p><strong>Price ($):</strong> $<%= coin.coin_price_usd %></p>
+          <p><strong>Market Cap ($):</strong> $<%= coin.coin_market_cap_usd %></p>
+          <p><strong>24h % Change:</strong> <%= coin.coin_percent_change_24h %>%</p>
+          <form action="/remove" method="POST">
+            <input type="hidden" name="coin_id" value="<%= coin.coin_id %>">
+            <button type="submit" class="btn">Remove</button>
+          </form>
+        </div>
+      <% }); %>      
+  </div>
+</body>
+</html>

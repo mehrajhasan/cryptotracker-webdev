@@ -1,0 +1,13 @@
+CREATE TABLE users (
+    username VARCHAR(50) PRIMARY KEY, 
+    password VARCHAR(255) 
+);
+
+CREATE TABLE watchlist (
+  coin_id VARCHAR(255) NOT NULL,
+  coin_name VARCHAR(255) NOT NULL,
+  coin_symbol VARCHAR(10),
+  coin_price_usd NUMERIC,
+  coin_market_cap_usd NUMERIC,
+  coin_percent_change_24h NUMERIC
+);

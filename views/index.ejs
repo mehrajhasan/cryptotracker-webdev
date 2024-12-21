@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Tracker</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Hello there!</h1>
+      <nav class="navigation">
+        <a href="/watchlist" class="btn btn-primary">Watchlist</a>
+      </nav>
+    </header>
+
+    <% tokens.forEach(coin => { %>
+      <div class="crypto-card">
+        <h2><%= coin.name %> (<%= coin.symbol %>)</h2>
+        <p><strong>Price ($):</strong> $<%= coin.price_usd %></p>
+        <p><strong>Market Cap ($):</strong> $<%= coin.market_cap_usd %></p>
+        <p><strong>24h % Change:</strong> <%= coin.percent_change_24h %>%</p>
+        <form action="/add" method="POST">
+          <input type="hidden" name="coin_id" value="<%= coin.id %>">
+          <input type="hidden" name="coin_name" value="<%= coin.name %>">
+          <input type="hidden" name="coin_symbol" value="<%= coin.symbol %>">
+          <input type="hidden" name="coin_price_usd" value="<%= coin.price_usd %>">
+          <input type="hidden" name="coin_market_cap_usd" value="<%= coin.market_cap_usd %>">
+          <input type="hidden" name="coin_percent_change_24h" value="<%= coin.percent_change_24h %>">
+          <button type="submit" class="btn">Add to Watchlist</button>
+        </form>        
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>
